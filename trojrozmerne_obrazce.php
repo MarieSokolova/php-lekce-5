@@ -81,29 +81,33 @@ class Koule extends TrojrozmernyObrazec
 class Jehlan extends TrojrozmernyObrazec
 {
     private $v;
-    private $Spodstavy;
-    private $Splaste;
-    public function __construct($v, $Spodstavy, $Splaste)
+    private $a;
+    public function __construct($v, $a)
  {
         $this->v = $v;
-        $this->Spodstavy = $Spodstavy;
-        $this->Splaste = $Splaste;
+        $this->a = $a;
+    
         parent::__construct(3);
     }
     public function ziskejObjem();
     {
-        return ($this->v*$this->Spodstavy/3);
+        return ($this->a*$this->a*$this->v/3);
     }
     {
     public function ziskejPovrch();
-        return ($this->Spodstavy+$this->Splaste);
+        return ($this->a*$this->a+($this->a*$this->v*2));
     }
 }
 function vypisDetail(ITrojrozmernyObrazec $utvar)
 {
-    echo '<h3>' . get_class($utvar) . '</h3>';
-    echo 'Objem: ' . $utvar->ziskejObjem() . '<br>';
-    echo 'Povrch: ' . $utvar->ziskejPovrch() . '<br><br>';
+    echo 'Objem ' . get_class($utvar). ':' . $utvar->ziskejObjem() . '<br>';
+    echo 'Povrch ' . get_class($utvar). ':'. $utvar->ziskejPovrch() . '<br>';
 }
-$krychle = new Krychle (3);
+$krychle = new Krychle (5);
 vypisDetail($krychle);
+$kvadr = new Kvadr (2, 3, 7);
+vypisDetail($kvadr);
+$koule = new Koule (6);
+vypisDetail($koule);
+$jehlan = new Jehlan (4, 3);
+vypisDetail($jehlan);

@@ -11,7 +11,7 @@ class Uzivatel
     }
     public function overeni()
     {
-        if ($this->jmeno == 'josef' && $this->heslo == 'josef1234'){
+        if ($this->jmeno == $jmeno && $this->heslo == $heslo){
            return true;
        } else {
            return false;
